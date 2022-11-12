@@ -4,6 +4,7 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
+  // const [accounts, setAccounts] = useState([]);
   const [accounts, setAccounts] = useState([]);
 
   return (

@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract RoboPunksNFT is ERC721, Ownable {
     uint256 public mintPrice;
-    uint256 public totalSupply;
+    uint256 public totalSupply = 10000;
     uint256 public maxSupply;
     uint256 public maxPerWallet;
     bool public isPublicMintEnabled;
@@ -28,26 +28,26 @@ contract RoboPunksNFT is ERC721, Ownable {
         isPublicMintEnabled = isPublicMintEnabled_;
     }
 
-    function setBaseTokenURI(string calldata baseTokenURI_) external onlyOwner {
-        baseTokenURI = baseTokenURI_;
-    }
+    // function setBaseTokenURI(string calldata baseTokenURI_) external onlyOwner {
+    //     baseTokenURI = baseTokenURI_;
+    // }
 
-    function tokenURI(uint256 tokenId_)
-        public
-        view
-        override
-        returns (string memory)
-    {
-        require(_exists(tokenId_), "Token Does Not Exists");
-        return
-            string(
-                abi.encodePacked(
-                    baseTokenURI,
-                    Strings.toString(tokenId_),
-                    ".json"
-                )
-            );
-    }
+    // function tokenURI(uint256 tokenId_)
+    //     public
+    //     view
+    //     override
+    //     returns (string memory)
+    // {
+    //     require(_exists(tokenId_), "Token Does Not Exists");
+    //     return
+    //         string(
+    //             abi.encodePacked(
+    //                 baseTokenURI,
+    //                 Strings.toString(tokenId_),
+    //                 ".json"
+    //             )
+    //         );
+    // }
 
     function withDraw() external onlyOwner {
         (bool success, ) = withDrawWallet.call{value: address(this).balance}(

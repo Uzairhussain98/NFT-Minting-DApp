@@ -1,12 +1,13 @@
 import React from "react";
-import { ethers, BigNumber } from "ethers";
+// import { ethers, BigNumber } from "ethers";
 //impoet RoboPunkNFt from ./robopunknft.json
 import { Box, Button, Image, Flex, Link, Text } from "@chakra-ui/react";
 
 // const RoboPunkNFTAddress = '0x0'
 
-const MainMint = (accounts, setAccounts) => {
+const MainMint = ({ accounts, setAccounts }) => {
   const isConnected = Boolean(accounts[0]);
+  console.log(isConnected + "from Mint");
 
   return (
     <Flex justify="center" align="center" height="100vh" paddingBottom="350px">
@@ -21,9 +22,20 @@ const MainMint = (accounts, setAccounts) => {
           </Text>
         </div>
         {isConnected ? (
-          <button>Mint</button>
+          <Button
+            backgroundColor="#D6517D"
+            color="white"
+            borderRadius="5px"
+            boxShadow="0 2px 2px 1px #0F0F0F"
+            fontFamily="inherit"
+            padding="15px"
+            margin="0 15px"
+            cursor="pointer"
+          >
+            Mint
+          </Button>
         ) : (
-          <Text>You Must Be Connected To Mint</Text>
+          <Text color="#D4517D">You Must Be Connected To Mint</Text>
         )}
       </Box>
     </Flex>
