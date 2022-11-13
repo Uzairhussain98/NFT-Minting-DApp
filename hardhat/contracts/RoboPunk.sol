@@ -5,7 +5,10 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract RoboPunksNFT is ERC721, Ownable, ERC721URIStorage {
+// "https://ipfs.filebase.io/ipfs/Qma5H91bsSH17UQC4sHMTGG9kyuAZn9AdXXxqF1BGyKFgJ"
+// contract-address = 0x90A3313213998BcEfDFDBEF04829cDb7eB62A308
+
+contract RoboPunk is ERC721, Ownable, ERC721URIStorage {
     uint256 public mintPrice = 0.05 ether;
     uint256 public maxSupply = 1000;
     uint256 public totalSupply;
@@ -33,7 +36,7 @@ contract RoboPunksNFT is ERC721, Ownable, ERC721URIStorage {
         return address(this).balance;
     }
 
-    function mint() public payable {
+    function mint(string memory tokenURI_) public payable {
         require(isPublicMintEnabled, "Minting is Not Allowed RN");
         require(mintPrice <= msg.value, "Wrong Mint Value");
         require(totalSupply <= maxSupply, "SoldOut");
@@ -42,10 +45,7 @@ contract RoboPunksNFT is ERC721, Ownable, ERC721URIStorage {
         uint256 newtokenId = totalSupply + 1;
         totalSupply++;
         _safeMint(msg.sender, newtokenId);
-        _setTokenURI(
-            newtokenId,
-            "https://ipfs.filebase.io/ipfs/Qma5H91bsSH17UQC4sHMTGG9kyuAZn9AdXXxqF1BGyKFgJ"
-        );
+        _setTokenURI(newtokenId, tokenURI_);
     }
 
     //Requied because of inheritance

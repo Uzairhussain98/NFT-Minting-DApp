@@ -39,7 +39,7 @@ const Navbar = ({ accounts, setAccounts }) => {
     <Flex justify="space-between" align="center" padding="30px">
       {/* social Icons */}
       <Flex justify="space-around" width="40%" padding="0 75px">
-        <Link href="facebook.com">
+        <Link href="https://www.facebook.com/" target="_blank">
           <Image src={fb} alt="gm" />
         </Link>
         <Link href="facebook.com">
