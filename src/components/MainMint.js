@@ -1,13 +1,14 @@
 import React from "react";
-// import { ethers, BigNumber } from "ethers";
-//impoet RoboPunkNFt from ./robopunknft.json
-import { Box, Button, Image, Flex, Link, Text } from "@chakra-ui/react";
+import { ethers } from "ethers";
+import RoboPunk from "../RoboPunk.json";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import TokenURIs from "./TokenURIs";
 
-// const RoboPunkNFTAddress = '0x0'
+const RoboPunkNFTAddress = "0x90A3313213998BcEfDFDBEF04829cDb7eB62A308";
 
 const MainMint = ({ accounts, setAccounts }) => {
   const isConnected = Boolean(accounts[0]);
-  console.log(isConnected + "from Mint");
+  console.log(TokenURIs.length);
 
   return (
     <Flex justify="center" align="center" height="100vh" paddingBottom="350px">
