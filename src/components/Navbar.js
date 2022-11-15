@@ -8,7 +8,7 @@ import truncateEthAddress from "truncate-eth-address";
 
 const Navbar = ({ accounts, setAccounts }) => {
   const isConnected = Boolean(accounts[0]);
-  console.log(isConnected);
+  // console.log(isConnected);
 
   async function connectWallet() {
     // console.log("work");
@@ -19,6 +19,10 @@ const Navbar = ({ accounts, setAccounts }) => {
       setAccounts(accounts);
     } else {
       alert("Please Install A Wallet");
+    }
+    if (isConnected) {
+      setAccounts([]);
+      // alert("Metamask Disconnected");
     }
   }
 

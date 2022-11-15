@@ -37,3 +37,6 @@ body {
   background-position: 40% 40%;
   background-attachment: fixed;
 }
+.loader {
+  margin-top: 130px;
+}

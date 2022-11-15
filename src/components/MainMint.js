@@ -6,9 +6,34 @@ import TokenURIs from "./TokenURIs";
 
 const RoboPunkNFTAddress = "0x90A3313213998BcEfDFDBEF04829cDb7eB62A308";
 
-const MainMint = ({ accounts, setAccounts }) => {
+const MainMint = ({ accounts, setAccounts, setIsMinting }) => {
   const isConnected = Boolean(accounts[0]);
-  console.log(TokenURIs.length);
+  // console.log(TokenURIs[2]);
+  // console.log(TokenURIs[Math.floor(Math.random() * TokenURIs.length)]);
+
+  async function handleMint() {
+    if (window.ethereum) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(
+        RoboPunkNFTAddress,
+        RoboPunk.abi,
+        signer
+      );
+      try {
+        const response = await contract.mint(
+          TokenURIs[Math.floor(Math.random() * TokenURIs.length)],
+          { value: ethers.utils.parseEther("0.05") }
+        );
+        setIsMinting(true);
+        await response.wait();
+        console.log("response", response);
+        setIsMinting(false);
+      } catch (error) {
+        console.log("Oh No! Something Went Wrong ", error);
+      }
+    }
+  }
 
   return (
     <Flex justify="center" align="center" height="100vh" paddingBottom="350px">
@@ -32,6 +57,7 @@ const MainMint = ({ accounts, setAccounts }) => {
             padding="15px"
             margin="0 15px"
             cursor="pointer"
+            onClick={handleMint}
           >
             Mint
           </Button>
