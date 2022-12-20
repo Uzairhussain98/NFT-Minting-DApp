@@ -8,6 +8,7 @@ function App() {
   // const [accounts, setAccounts] = useState([]);
   const [accounts, setAccounts] = useState([]);
   const [isMinting, setIsMinting] = useState(false);
+  const [showModal, setShowModal] = useState(true);
 
   if (isMinting) {
     return (
@@ -43,6 +44,21 @@ function App() {
           />
         </div>
         <div className="moving-bg"></div>
+
+        {/* // MODAL */}
+        {showModal ? (
+          <div className="modal">
+            <div className="modal-content">
+              <div
+                onClick={() => setShowModal(false)}
+                style={{ float: "right", cursor: "pointer" }}
+              >
+                X
+              </div>
+              <p>Congratulation!!! Your RoboPunk NFT is Minted..</p>
+            </div>
+          </div>
+        ) : null}
       </div>
     );
   }

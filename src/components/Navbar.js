@@ -40,7 +40,12 @@ const Navbar = ({ accounts, setAccounts }) => {
   // }
 
   return (
-    <Flex justify="space-between" align="center" padding="30px">
+    <Flex
+      justify="space-between"
+      align="center"
+      padding="30px"
+      w={[300, 400, 500]}
+    >
       {/* social Icons */}
       <Flex justify="space-around" width="40%" padding="0 75px">
         <Link href="https://www.facebook.com/" target="_blank">
@@ -72,6 +77,7 @@ const Navbar = ({ accounts, setAccounts }) => {
             fontFamily="inherit"
             padding="15px"
             margin="0 15px"
+            fontSize="14px"
             cursor="pointer"
             onClick={() => connectWallet()}
           >
